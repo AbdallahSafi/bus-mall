@@ -56,7 +56,7 @@ displayProducts();
 function changeProducts() {
   totalClicks += 1;
   // If he has finished all 25 clicks, statistics will be shown
-  if (totalClicks === 25) {
+  if (totalClicks === 26) {
     for (var y = 0; y < 3; y++) {
       votBtns[y].onclick = null;
     }
