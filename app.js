@@ -1,6 +1,10 @@
 'use strict';
 
 var mainSection = document.getElementsByTagName('main');
+
+//get Images elements
+var imageBoxs = document.getElementsByClassName('box-up');
+var votBtns = document.getElementsByClassName('cart');
 //creating elements for the statistics section
 var statisticsSection = document.createElement('section');
 statisticsSection.setAttribute('id', 'statisticsSection');
@@ -41,22 +45,22 @@ new product('water-can', 'img/water-can.jpg');
 new product('wine-glass', 'img/wine-glass.jpg');
 
 //dispalying the 3 products for the first time
+
 displayProducts();
 
 // ********************* functions section *********************
 
-productSection.addEventListener('click', changeProducts);
+// productSection.addEventListener('click', changeProducts);
 
 // ------------------------- Function to change products -------------------------
-function changeProducts(event) {
-  //if we clicked the secion outside the images nothing will happend
-  if (event.target.id === 'products') {
-    return;
-  }
+function changeProducts() {
   totalClicks += 1;
   // If he has finished all 25 clicks, statistics will be shown
-  if (totalClicks === 25) {
-    productSection.removeEventListener('click', changeProducts);
+  if (totalClicks === 26) {
+    for (var y = 0; y < 3; y++) {
+      votBtns[y].onclick = null;
+    }
+
     // display statistics
     mainSection[0].appendChild(statisticsSection);
     for (var i = 0; i < products.length; i++) {
@@ -66,6 +70,7 @@ function changeProducts(event) {
     return;
   }
   var itemClicked = event.target.id;
+  console.log(itemClicked);
   for (var z = 0; z < products.length; z++) {
     if (Number(itemClicked) === z) {
       products[z].clicks += 1;
@@ -77,10 +82,14 @@ function changeProducts(event) {
 // ------------------------- Function to display products -------------------------
 function displayProducts() {
   var currentProducts = [];
-  //removing the pervous images pefore generating new
-  if (productSection.hasChildNodes()) {
-    productSection.innerHTML = '';
+  var imgsCreated = [];
+  //   removing the pervous images pefore generating new
+  for (var i = 0; i < imageBoxs.length; i++) {
+    if (imageBoxs[i].hasChildNodes()) {
+      imageBoxs[i].innerHTML = '';
+    }
   }
+
   do {
     var random = generatRandomProduct();
     // checking if the number is exist in the current or in the previous
@@ -90,15 +99,22 @@ function displayProducts() {
     // if not exist push it to the array
     if (!isExistInCurrent && !isExistInPrevious) {
       currentProducts.push(random);
+
       //create an image element
       var img = document.createElement('img');
       img.setAttribute('src', products[random].path);
+      img.setAttribute('class', 'img');
       img.setAttribute('id', random);
-      productSection.appendChild(img);
-      //calculating the shown of the image
+      imgsCreated.push(img);
+      // calculating the shown of the image
       products[random].shown += 1;
     }
   } while (currentProducts.length < 3);
+
+  for (var s = 0; s < 3; s++) {
+    votBtns[s].setAttribute('id', imgsCreated[s].id);
+    imageBoxs[s].appendChild(imgsCreated[s]);
+  }
   previousProducts = currentProducts;
 }
 

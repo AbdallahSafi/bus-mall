@@ -4,37 +4,176 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bus Mall</title>
-    <style>
-        
-      section:first-child {
-        text-align: center;
-        background-color: aqua;
-
-      }
-
-      section:nth-child(2){
-          background-color: brown;
-          color: #fff;
-      }
-
-     
-      section img{
-          margin: 20px;
-          width: 150px;
-          height: auto;
-          border: 1px solid #000;
-          
-      }
-
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
-      <h1>The Bus MAll</h1>
+      <div>
+        <img src="img/logo.svg" alt="logo" />
+        <h1>Bus Mall</h1>
+      </div>
+      <h2>Welcome to vote on some products</h2>
+      <p>We are going to collect the results to enhance our catalog for you</p>
     </header>
     <main>
       <section id="products">
+        <div class="container page-wrapper">
+          <div class="page-inner">
+            <div class="row">
+              <div class="el-wrapper">
+                <div class="box-up">
+                  <!-- <img id="img1" class="img" src="img/dragon.jpg" alt="img1" /> -->
+                </div>
+                <div class="box-down">
+                  <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                  </div>
+                  <a class="cart" onclick="changeProducts()">
+                    <span class="price"><i class="far fa-heart"></i></span>
+                    <span class="add-to-cart">
+                      <span class="txt">Vote</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container page-wrapper">
+          <div class="page-inner">
+            <div class="row">
+              <div class="el-wrapper">
+                <div class="box-up">
+                  <!-- <img id="img2" class="img" src="img/pen.jpg" alt="img2" /> -->
+                </div>
+
+                <div class="box-down">
+                  <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                  </div>
+
+                  <a class="cart" onclick="changeProducts()">
+                    <span class="price"><i class="far fa-heart"></i></span>
+                    <span class="add-to-cart">
+                      <span class="txt">Vote</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container page-wrapper">
+          <div class="page-inner">
+            <div class="row">
+              <div class="el-wrapper">
+                <div class="box-up">
+                  <!-- <img
+                    id="img3"
+                    class="img"
+                    src="img/scissors.jpg"
+                    alt="img3"
+                  /> -->
+                </div>
+
+                <div class="box-down">
+                  <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                  </div>
+
+                  <a class="cart" onclick="changeProducts()">
+                    <span class="price"><i class="far fa-heart"></i></span>
+                    <span class="add-to-cart">
+                      <span class="txt">Vote</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
+      <!-- Statistics Section -->
+      
+      <!-- <section id="statistics">
+          <h2>Statistics</h2>
+          <div class="border-line"></div>
+       <div class="flex-container">
+        <div class="statistics-card">
+          <p>name</p>
+          <div>
+            <span><i class="far fa-heart"></i>2</span>
+            <span><i class="far fa-eye"></i></i>2</span>  
+          </div>
+        </div>
+
+          <div class="statistics-card">
+            <p>name</p>
+            <div>
+              <span><i class="far fa-heart"></i>2</span>
+              <span><i class="far fa-eye"></i></i>2</span>  
+            </div>
+        </div>
+         
+
+        <div class="statistics-card">
+            <p>name</p>
+            <div>
+              <span><i class="far fa-heart"></i>2</span>
+              <span><i class="far fa-eye"></i></i>2</span>  
+            </div>
+        </div>
+
+        <div class="statistics-card">
+            <p>name</p>
+            <div>
+              <span><i class="far fa-heart"></i>2</span>
+              <span><i class="far fa-eye"></i></i>2</span>  
+            </div>
+        </div>
+
+        <div class="statistics-card">
+            <p>name</p>
+            <div>
+              <span><i class="far fa-heart"></i>2</span>
+              <span><i class="far fa-eye"></i></i>2</span>  
+            </div>
+        </div>
+
+
+        <div class="statistics-card">
+            <p>name</p>
+            <div>
+              <span><i class="far fa-heart"></i>2</span>
+              <span><i class="far fa-eye"></i></i>2</span>  
+            </div>
+        </div>
+
+        <div class="statistics-card">
+            <p>name</p>
+            <div>
+              <span><i class="far fa-heart"></i>2</span>
+              <span><i class="far fa-eye"></i></i>2</span>  
+            </div>
+        </div>
+
+
+        <div class="statistics-card">
+            <p>name</p>
+            <div>
+              <span><i class="far fa-heart"></i>2</span>
+              <span><i class="far fa-eye"></i></i>2</span>  
+            </div>
+        </div>
+            
+    </div> 
+      </section> -->
     </main>
     <script src="app.js"></script>
   </body>
