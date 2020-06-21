@@ -6,12 +6,26 @@
     <title>Bus Mall</title>
     <style>
         
-      section {
+      section:first-child {
         text-align: center;
+        background-color: aqua;
+
       }
+
+      section:nth-child(2){
+          background-color: brown;
+          color: #fff;
+      }
+
+     
       section img{
           margin: 20px;
+          width: 150px;
+          height: auto;
+          border: 1px solid #000;
+          
       }
+
     </style>
   </head>
   <body>
@@ -20,10 +34,8 @@
     </header>
     <main>
       <section id="products">
-        <img id="image1" src="" alt="image1" />
-        <img id="image2" src="" alt="image2" />
-        <img id="image3" src="" alt="image3" />
       </section>
     </main>
+    <script src="app.js"></script>
   </body>
 </html>
