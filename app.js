@@ -1,11 +1,12 @@
 'use strict';
+
 var mainSection = document.getElementsByTagName('main');
 //creating elements for the statistics section
 var statisticsSection = document.createElement('section');
 statisticsSection.setAttribute('id', 'statisticsSection');
 var list = document.createElement('ul');
-var productSection = document.getElementById('products');
 
+var productSection = document.getElementById('products');
 // product Object decleration
 var products = [];
 var previousProducts = [];
@@ -39,15 +40,19 @@ new product('usb', 'img/usb.gif');
 new product('water-can', 'img/water-can.jpg');
 new product('wine-glass', 'img/wine-glass.jpg');
 
+//dispalying the 3 products for the first time
 displayProducts();
 
 // ********************* functions section *********************
 
 productSection.addEventListener('click', changeProducts);
 
-
 // ------------------------- Function to change products -------------------------
 function changeProducts(event) {
+  //if we clicked the secion outside the images nothing will happend
+  if (event.target.id === 'products') {
+    return;
+  }
   totalClicks += 1;
   // If he has finished all 25 clicks, statistics will be shown
   if (totalClicks === 25) {
@@ -62,7 +67,7 @@ function changeProducts(event) {
   }
   var itemClicked = event.target.id;
   for (var z = 0; z < products.length; z++) {
-    if (itemClicked === products[z].name) {
+    if (Number(itemClicked) === z) {
       products[z].clicks += 1;
     }
   }
@@ -88,7 +93,7 @@ function displayProducts() {
       //create an image element
       var img = document.createElement('img');
       img.setAttribute('src', products[random].path);
-      img.setAttribute('id', products[random].name);
+      img.setAttribute('id', random);
       productSection.appendChild(img);
       //calculating the shown of the image
       products[random].shown += 1;
