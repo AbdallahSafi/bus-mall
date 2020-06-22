@@ -1,26 +1,26 @@
 'use strict';
 
-var mainSection = document.getElementsByTagName('main');
 
 //get Images elements
 var imageBoxs = document.getElementsByClassName('box-up');
 var votBtns = document.getElementsByClassName('cart');
-//creating elements for the statistics section
-var statisticsSection = document.createElement('section');
-statisticsSection.setAttribute('id', 'statisticsSection');
-var list = document.createElement('ul');
 
-var productSection = document.getElementById('products');
+
 // product Object decleration
 var products = [];
 var previousProducts = [];
 var totalClicks = 0;
+var productsName = [];
+var clicksArr =[];
+var shownArr=[];
+
 function product(name, path) {
   this.name = name;
   this.path = path;
   this.clicks = 0;
   this.shown = 0;
   products.push(this);
+  productsName.push(this.name);
 }
 
 // ----------------- Creating the objects ------------------
@@ -45,12 +45,10 @@ new product('water-can', 'img/water-can.jpg');
 new product('wine-glass', 'img/wine-glass.jpg');
 
 //dispalying the 3 products for the first time
-
 displayProducts();
 
 // ********************* functions section *********************
 
-// productSection.addEventListener('click', changeProducts);
 
 // ------------------------- Function to change products -------------------------
 function changeProducts() {
@@ -61,12 +59,12 @@ function changeProducts() {
       votBtns[y].onclick = null;
     }
 
-    // display statistics
-    mainSection[0].appendChild(statisticsSection);
+    // store clicks and showns 
     for (var i = 0; i < products.length; i++) {
-      products[i].displayStatistics();
+      shownArr.push(products[i].shown);
+      clicksArr.push(products[i].clicks);
     }
-    statisticsSection.appendChild(list);
+    displayStatisticsChart();
     return;
   }
   var itemClicked = event.target.id;
@@ -118,20 +116,6 @@ function displayProducts() {
   previousProducts = currentProducts;
 }
 
-// ------------------------- Function to display statistcs -------------------------
-//display a section with list that contains statistics about the products
-product.prototype.displayStatistics = function () {
-  var listItem = document.createElement('li');
-  listItem.textContent =
-    this.name +
-    ' had ' +
-    this.clicks +
-    ' votes and was shown ' +
-    this.shown +
-    ' times ';
-  list.appendChild(listItem);
-};
-
 //------------------------- function generate random number -------------------------
 function generatRandomProduct() {
   return Math.floor(Math.random() * products.length);
@@ -142,26 +126,36 @@ function checkExistence(e) {
   return e === this;
 }
 
-
-
-
 // -------------------- Charts Section -----------------------
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
+
+function displayStatisticsChart(){
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var chart = new Chart(ctx, {
   // The type of chart we want to create
-  type: 'bar',
+    type: 'bar',
 
-  // The data for our dataset
-  data: {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45]
-    }]
-  },
+    // The data for our dataset
+    data: {
+      labels: productsName,
+      datasets: [
+        {
+          label: 'votes',
+          backgroundColor: '#c94b4b',
+          borderColor: '#c94b4b',
+          data: clicksArr,
+        },
+        {
+          label: 'showns',
+          backgroundColor: '#4b134f',
+          borderColor: '#4b134f',
+          data: shownArr,
+        }
+      ],
+    },
 
-  // Configuration options go here
-  options: {}
-});
+    // Configuration options go here
+    options: {},
+  });
+
+}
+
