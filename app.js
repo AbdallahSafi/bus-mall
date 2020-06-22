@@ -141,3 +141,7 @@ function generatRandomProduct() {
 function checkExistence(e) {
   return e === this;
 }
+
+
+
+
