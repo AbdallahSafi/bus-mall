@@ -4,7 +4,7 @@
 var imageBoxs = document.getElementsByClassName('box-up');
 var votBtns = document.getElementsByClassName('cart');
 
-// product Object decleration
+
 var products = [];
 var previousProducts = [];
 var totalClicks = 0;
@@ -13,6 +13,7 @@ var clicksArr = [];
 var shownArr = [];
 var retrievedProducts;
 
+// product Object decleration
 function product(name, path) {
   this.name = name;
   this.path = path;
@@ -22,6 +23,7 @@ function product(name, path) {
   productsName.push(this.name);
 }
 
+//object function to return back all of the values that have been stored in local storage to each object
 product.prototype.setItBack = function () {
   for (var i = 0; i < retrievedProducts.length; i++) {
     if (retrievedProducts[i].name === this.name) {
@@ -52,7 +54,7 @@ new product('usb', 'img/usb.gif');
 new product('water-can', 'img/water-can.jpg');
 new product('wine-glass', 'img/wine-glass.jpg');
 
-retrieveProduct();
+retrieveProducts();
 //dispalying the 3 products for the first time
 displayProducts();
 
@@ -130,10 +132,10 @@ function checkExistence(e) {
   return e === this;
 }
 
-// -------------------- Charts Section -----------------------
+// -------------------- Charts function -----------------------
 
 function displayStatisticsChart() {
-  // store clicks and showns
+  // store clicks and showns in arrays
   for (var i = 0; i < products.length; i++) {
     shownArr.push(products[i].shown);
     clicksArr.push(products[i].clicks);
@@ -168,15 +170,15 @@ function displayStatisticsChart() {
 }
 
 // -------------------- Function to Store in Local Storage -----------------------
-
 function storeProducts() {
   var productsString = JSON.stringify(products);
   localStorage.setItem('products', productsString);
 }
 
+//----------------------------------------------------------------------------------
 //  Function that checks if there is products that saved in the local storage
 // and if is it true it will call an object function that will set back the values to the objects
-function retrieveProduct() {
+function retrieveProducts() {
   retrievedProducts = JSON.parse(localStorage.getItem('products'));
   if (!retrievedProducts) {
     console.log('there is no item with this name');
@@ -185,5 +187,6 @@ function retrieveProduct() {
   for (var i = 0; i < products.length; i++) {
     products[i].setItBack();
   }
+  // call dispaly chart function to dispaly the stored data
   displayStatisticsChart();
 }
