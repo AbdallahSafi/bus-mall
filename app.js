@@ -59,7 +59,7 @@ function changeProducts() {
       votBtns[y].onclick = null;
     }
 
-    // store clicks and showns 
+    // store clicks and showns
     for (var i = 0; i < products.length; i++) {
       shownArr.push(products[i].shown);
       clicksArr.push(products[i].clicks);

@@ -55,7 +55,7 @@ header p {
 /* ------------ Main Section ------------------ */
 
 #products {
-  margin: 0 150px;
+  margin: 100px 150px;
   display: flex;
   justify-content: space-around;
   margin-top: -100px;
@@ -267,6 +267,7 @@ header p {
 
 /* -------------Statistics Section----------- */
 #statistics {
+  /* display: none; */
   margin-top: 100px;
   padding: 100px 150px;
   background-color: #fff;
