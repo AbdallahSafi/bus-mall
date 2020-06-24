@@ -10,6 +10,7 @@ var totalClicks = 0;
 var productsName = [];
 var clicksArr = [];
 var shownArr = [];
+var chart;
 
 // product Object decleration
 function product(name, path) {
@@ -72,6 +73,11 @@ function changeProducts() {
       votBtns[y].onclick = null;
     }
     console.log(products);
+    // Destroys a specific chart instance
+    if (chart) {
+      // console.log("chart exist");
+      chart.destroy();
+    }
     displayStatisticsChart();
     return;
   }
@@ -149,7 +155,8 @@ function displayStatisticsChart() {
     clicksArr.push(products[i].clicks);
   }
   var ctx = document.getElementById("myChart").getContext("2d");
-  var chart = new Chart(ctx, {
+
+  chart = new Chart(ctx, {
     // The type of chart we want to create
     type: "bar",
 
