@@ -17,7 +17,7 @@ header {
     rgba(75, 19, 79, 1) 100%
   );
   width: 100vw;
-  height: 500px;
+  height: 600px;
 }
 header div {
   display: flex;
@@ -50,6 +50,53 @@ header p {
   text-align: center;
   font-size: 1.2em;
   font-weight: 300;
+}
+
+/* form section inside header */
+.formStyle {
+  margin: 0 auto;
+  /* margin-top: 30px; */
+  width: 25%;
+  border-radius: 5px;
+  background-color: #f6f4f3;
+  padding: 20px;
+}
+
+#addRounds {
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  /* background-color: #c94b4b; */
+}
+
+#addRounds label {
+  text-align: center;
+  display: block;
+  color: #333;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px 10px;
+  margin: 15px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type="submit"] {
+  font-family: "Raleway", sans-serif;
+  display: block;
+  width: 50%;
+  background-color: #4b134f;
+  color: white;
+  padding: 10px 10px;
+  margin: 15px auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background-color: #c94b4b;
 }
 
 /* ------------ Main Section ------------------ */
@@ -291,7 +338,7 @@ header p {
   background-color: #c94b4b;
 }
 
-#myChart{
+#myChart {
   width: 100% !important;
-  height:500px !important;
+  height: 500px !important;
 }

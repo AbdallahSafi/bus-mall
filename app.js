@@ -1,8 +1,10 @@
-'use strict';
+"use strict";
 
 //get Images elements
-var imageBoxs = document.getElementsByClassName('box-up');
-var votBtns = document.getElementsByClassName('cart');
+var imageBoxs = document.getElementsByClassName("box-up");
+var votBtns = document.getElementsByClassName("cart");
+var addRounds = document.getElementById("addRounds");
+var defaultRounds = 26;
 
 var products = [];
 var previousProducts = [];
@@ -36,25 +38,25 @@ product.prototype.setItBack = function () {
 };
 
 // ----------------- Creating the objects ------------------
-new product('bag', 'img/bag.jpg');
-new product('banana', 'img/banana.jpg');
-new product('bathroom', 'img/bathroom.jpg');
-new product('boots', 'img/boots.jpg');
-new product('breakfast', 'img/breakfast.jpg');
-new product('bubblegum', 'img/bubblegum.jpg');
-new product('chair', 'img/chair.jpg');
-new product('cthulhu', 'img/cthulhu.jpg');
-new product('dog-duck', 'img/dog-duck.jpg');
-new product('pen', 'img/pen.jpg');
-new product('pet-sweep', 'img/pet-sweep.jpg');
-new product('scissors', 'img/scissors.jpg');
-new product('shark', 'img/shark.jpg');
-new product('sweep', 'img/sweep.png');
-new product('tauntaun', 'img/tauntaun.jpg');
-new product('unicorn', 'img/unicorn.jpg');
-new product('usb', 'img/usb.gif');
-new product('water-can', 'img/water-can.jpg');
-new product('wine-glass', 'img/wine-glass.jpg');
+new product("bag", "img/bag.jpg");
+new product("banana", "img/banana.jpg");
+new product("bathroom", "img/bathroom.jpg");
+new product("boots", "img/boots.jpg");
+new product("breakfast", "img/breakfast.jpg");
+new product("bubblegum", "img/bubblegum.jpg");
+new product("chair", "img/chair.jpg");
+new product("cthulhu", "img/cthulhu.jpg");
+new product("dog-duck", "img/dog-duck.jpg");
+new product("pen", "img/pen.jpg");
+new product("pet-sweep", "img/pet-sweep.jpg");
+new product("scissors", "img/scissors.jpg");
+new product("shark", "img/shark.jpg");
+new product("sweep", "img/sweep.png");
+new product("tauntaun", "img/tauntaun.jpg");
+new product("unicorn", "img/unicorn.jpg");
+new product("usb", "img/usb.gif");
+new product("water-can", "img/water-can.jpg");
+new product("wine-glass", "img/wine-glass.jpg");
 
 retrieveProducts();
 // console.log(products);
@@ -64,11 +66,18 @@ displayProducts();
 // ********************* functions section *********************
 
 // ------------------------- Function to change products -------------------------
+
+addRounds.addEventListener("submit", addNumRounds);
+function addNumRounds() {
+  event.preventDefault();
+  defaultRounds = Number(event.target.numRounds.value) + 1;
+}
+
 function changeProducts(id) {
   totalClicks += 1;
   // console.log(totalClicks);
   // If he has finished all 25 clicks, statistics will be shown
-  if (totalClicks === 26) {
+  if (totalClicks === defaultRounds) {
     for (var y = 0; y < 3; y++) {
       votBtns[y].onclick = null;
     }
@@ -98,7 +107,7 @@ function displayProducts() {
   //   removing the pervous images pefore generating new
   for (var i = 0; i < imageBoxs.length; i++) {
     if (imageBoxs[i].hasChildNodes()) {
-      imageBoxs[i].innerHTML = '';
+      imageBoxs[i].innerHTML = "";
     }
   }
 
@@ -113,10 +122,10 @@ function displayProducts() {
       currentProducts.push(random);
 
       //create an image element
-      var img = document.createElement('img');
-      img.setAttribute('src', products[random].path);
-      img.setAttribute('class', 'img');
-      img.setAttribute('id', random);
+      var img = document.createElement("img");
+      img.setAttribute("src", products[random].path);
+      img.setAttribute("class", "img");
+      img.setAttribute("id", random);
       imgsCreated.push(img);
       // calculating the shown of the image
       products[random].shown += 1;
@@ -125,8 +134,8 @@ function displayProducts() {
   } while (currentProducts.length < 3);
 
   for (var s = 0; s < 3; s++) {
-    votBtns[s].setAttribute('id', imgsCreated[s].id);
-    votBtns[s].setAttribute('id', imgsCreated[s].id);
+    votBtns[s].setAttribute("id", imgsCreated[s].id);
+    votBtns[s].setAttribute("id", imgsCreated[s].id);
     imageBoxs[s].appendChild(imgsCreated[s]);
   }
   previousProducts = currentProducts;
@@ -154,26 +163,26 @@ function displayStatisticsChart() {
     shownArr.push(products[i].shown);
     clicksArr.push(products[i].clicks);
   }
-  var ctx = document.getElementById('myChart').getContext('2d');
+  var ctx = document.getElementById("myChart").getContext("2d");
 
   chart = new Chart(ctx, {
     // The type of chart we want to create
-    type: 'bar',
+    type: "bar",
 
     // The data for our dataset
     data: {
       labels: productsName,
       datasets: [
         {
-          label: 'votes',
-          backgroundColor: '#c94b4b',
-          borderColor: '#c94b4b',
+          label: "votes",
+          backgroundColor: "#c94b4b",
+          borderColor: "#c94b4b",
           data: clicksArr,
         },
         {
-          label: 'showns',
-          backgroundColor: '#4b134f',
-          borderColor: '#4b134f',
+          label: "showns",
+          backgroundColor: "#4b134f",
+          borderColor: "#4b134f",
           data: shownArr,
         },
       ],
@@ -195,7 +204,7 @@ function storeProducts(item) {
 // and if is it true it will call an object function that will set back the values to the objects
 function retrieveProducts() {
   if (localStorage.length === 0) {
-    console.log('there is no item with this name');
+    console.log("there is no item with this name");
     return;
   }
   for (var i = 0; i < products.length; i++) {
