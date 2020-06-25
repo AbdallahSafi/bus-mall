@@ -82,7 +82,6 @@ function changeProducts(id) {
     return;
   }
   var itemClicked = id;
-  console.log(itemClicked);
   for (var z = 0; z < products.length; z++) {
     if (Number(itemClicked) === z) {
       products[z].clicks += 1;
