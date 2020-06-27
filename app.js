@@ -81,7 +81,9 @@ function changeProducts(id) {
   localStorage.setItem('totalClicks', totalClicks);
 
   // If he has finished all 25 clicks, statistics will be shown
-  if (totalClicks === defaultRounds) {
+  if (totalClicks >= defaultRounds) {
+    totalClicks = 0;
+    localStorage.setItem('totalClicks', totalClicks);
     for (var y = 0; y < 3; y++) {
       votBtns[y].onclick = null;
     }
@@ -92,6 +94,7 @@ function changeProducts(id) {
       chart.destroy();
     }
     displayStatisticsChart();
+   
     return;
   }
   var itemClicked = id;
